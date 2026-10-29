@@ -48,6 +48,7 @@
         <div class="stat"><strong>46</strong><span>Note pages</span></div>
         <div class="stat"><strong>23h 09m</strong><span>Class videos</span></div>
       </div>
+      <div style="margin-top:18px"><a class="action" href="downloads/all-notes.pdf" download>Download all notes (PDF, 46 pages)</a></div>
     </div>
     <div class="hero-art" aria-hidden="true"><div class="note-stack"><div class="sheet back"></div><div class="sheet mid"></div><div class="sheet front"><div class="scribble">Learn by doing</div><div class="fake-line"></div><div class="fake-line short"></div><div style="margin-top:15px"><span class="highlight">Key takeaway</span></div><div class="fake-line"></div><div class="fake-line short"></div></div></div></div>
   </section>
@@ -89,6 +90,7 @@
         <p id="classDescription">Learn Claude, build with Claude, and automate with Claude.</p>
         <div class="class-tools">
           <a class="action primary" id="videoLink" href="https://www.facebook.com/share/v/1Hy65PizCW/" target="_blank" rel="noopener noreferrer">Watch the original class</a>
+          <a class="action" id="downloadLink" href="downloads/class01-notes.pdf" download>Download this class notes (PDF)</a>
           <button class="action" id="completeBtn">✓ I finished this class</button>
         </div>
       </div>
@@ -195,7 +197,7 @@ function renderClass(){
  $("classBanner").style.setProperty("--banner",bg);$("classBanner").dataset.number=String(c.n).padStart(2,"0");
  $("classTag").textContent=`CLASS ${String(c.n).padStart(2,"0")}`;$("classDate").textContent=c.date.toUpperCase();$("classDuration").textContent=c.duration;
  $("classTitle").textContent=c.title;$("classDescription").textContent=c.desc;
- $("videoLink").href=c.video;$("sourceLink").href=c.video;$("transcriptLink").href=c.transcript;
+ $("videoLink").href=c.video;$("sourceLink").href=c.video;$("transcriptLink").href=c.transcript;$("downloadLink").href=`downloads/class${String(c.n).padStart(2,"0")}-notes.pdf`;
  $("completeBtn").textContent=completed.has(selected)?"✓ Completed · Mark again to undo":"✓ Mark as complete";
  $("miniPoints").innerHTML=c.points.slice(0,4).map(p=>`<li>${esc(p)}</li>`).join("");
  $("fullPoints").innerHTML=c.points.map(p=>`<li>${esc(p)}</li>`).join("");
