@@ -181,7 +181,7 @@ const $=id=>document.getElementById(id);
 let selected=0, page=0, activeTab="notes", query="";
 let completed=new Set();
 try{completed=new Set(JSON.parse(localStorage.getItem("hisham-notes-completed")||"[]"));}catch(e){}
-const toneColors=[["#dff0df","#244d37"],["#f8e5d8","#71422e"],["#e7e2fb","#4c3d87"],["#d9efed","#245c59"],["#eee0fa","#65418a"],["#e6f0cf","#4b642c"],["#dceeff","#285785"],["#f7dfe5","#853c54"],["#f8e9bd","#755719"]];
+const toneColors=[["#dff0df","#244d37"],["#f8e5d8","#71422e"],["#e7e2fb","#4c3d87"],["#d9efed","#245c59"],["#eee0fa","#65418a"],["#e6f0cf","#4b642c"],["#dceeff","#285785"],["#f7dfe5","#853c54"],["#f8e9bd","#755719"],["#e2f7e2","#2f6b2f"],["#e6f7ff","#1a5276"]];
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function renderList(){
  const filtered=classes.filter(c=>(`${c.n} ${c.title} ${c.short} ${c.topic} ${c.points.join(" ")}`).toLowerCase().includes(query.toLowerCase()));
@@ -205,9 +205,9 @@ function renderPage(){
  const c=classes[selected], img=c.images[page];
  $("noteImage").src=img;$("noteImage").alt=`Class ${c.n} notebook page ${page+1}`;
  $("noteImageLink").href=img;
- $("pageNum").textContent=`${String(page+1).padStart(2,"0")} / 04`;
- $("pageStatus").textContent=`Page ${page+1} of 4`;$("pageCounter").textContent=`${page+1} / 4`;
- $("prevPage").disabled=page===0;$("nextPage").disabled=page===3;
+ $("pageNum").textContent=`${String(page+1).padStart(2,"0")} / ${String(c.images.length).padStart(2,"0")}`;
+ $("pageStatus").textContent=`Page ${page+1} of ${c.images.length}`;$("pageCounter").textContent=`${page+1} / ${c.images.length}`;
+ $("prevPage").disabled=page===0;$("nextPage").disabled=page===c.images.length-1;
  $("pageDots").innerHTML=c.images.map((_,i)=>`<button class="dot ${i===page?"active":""}" data-page="${i}" aria-label="Open page ${i+1}"></button>`).join("");
  document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>{page=Number(b.dataset.page);renderPage()}));
 }
