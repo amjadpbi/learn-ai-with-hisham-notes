@@ -52,8 +52,8 @@
       <h1>Learn Claude, step by step.<br>No coding needed.</h1>
       <p>Short, clear notes from 13 classes. Start at Class 1, go one class at a time, and learn what you can do with Claude, in plain words.</p>
       <div class="hero-stats">
-        <div class="stat"><strong>12</strong><span>Classes</span></div>
-        <div class="stat"><strong>50</strong><span>Note pages</span></div>
+        <div class="stat"><strong>13</strong><span>Classes</span></div>
+        <div class="stat"><strong>54</strong><span>Note pages</span></div>
         <div class="stat"><strong>26h 57m</strong><span>Class videos</span></div>
       </div>
       <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="action" href="downloads/all-notes.pdf" download>Download all notes (PDF, 54 pages)</a><a href="https://www.facebook.com/Amjadz91/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#1877F2;border:1px solid #1877F2;color:#fff;padding:10px 14px;border-radius:11px;font-size:12px;font-weight:750;text-decoration:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Follow for more on Facebook</a><a class="action" href="#all-class-links" onclick="document.getElementById('all-class-links').open=true">All Classes Link</a></div>
@@ -84,10 +84,10 @@
 
   <main class="workspace">
     <aside class="curriculum">
-      <div class="curriculum-head"><strong>Your classes</strong><span>01 — 12</span></div>
+      <div class="curriculum-head"><strong>Your classes</strong><span>01 — 13</span></div>
       <div class="lesson-list" id="lessonList"></div>
       <div class="progress-box">
-        <div class="progress-top"><span>Your progress</span><span id="progressText">0 / 9 complete</span></div>
+        <div class="progress-top"><span>Your progress</span><span id="progressText">0 / 13 complete</span></div>
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
         <p>Your progress is saved on this device.</p>
       </div>
@@ -195,7 +195,7 @@ const $=id=>document.getElementById(id);
 let selected=0, page=0, activeTab="notes", query="";
 let completed=new Set();
 try{completed=new Set(JSON.parse(localStorage.getItem("hisham-notes-completed")||"[]"));}catch(e){}
-const toneColors=[["#dff0df","#244d37"],["#f8e5d8","#71422e"],["#e7e2fb","#4c3d87"],["#d9efed","#245c59"],["#eee0fa","#65418a"],["#e6f0cf","#4b642c"],["#dceeff","#285785"],["#f7dfe5","#853c54"],["#f8e9bd","#755719"],["#e2f7e2","#2f6b2f"],["#e6f7ff","#1a5276"],["#e8f5e9","#2e7d32"]];
+const toneColors=[["#dff0df","#244d37"],["#f8e5d8","#71422e"],["#e7e2fb","#4c3d87"],["#d9efed","#245c59"],["#eee0fa","#65418a"],["#e6f0cf","#4b642c"],["#dceeff","#285785"],["#f7dfe5","#853c54"],["#f8e9bd","#755719"],["#e2f7e2","#2f6b2f"],["#e6f7ff","#1a5276"],["#e8f5e9","#2e7d32"],["#fff3e0","#7a4a00"]];
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function renderList(){
  const filtered=classes.filter(c=>(`${c.n} ${c.title} ${c.short} ${c.topic} ${c.points.join(" ")}`).toLowerCase().includes(query.toLowerCase()));
@@ -226,7 +226,7 @@ function renderPage(){
  document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>{page=Number(b.dataset.page);renderPage()}));
 }
 function renderProgress(){
- $("progressText").textContent=`You finished ${completed.size} of 11 classes`;$("progressFill").style.width=`${completed.size/11*100}%`;
+ $("progressText").textContent=`You finished ${completed.size} of 13 classes`;$("progressFill").style.width=`${completed.size/13*100}%`;
 }
 function showTab(tab){
  activeTab=tab;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
